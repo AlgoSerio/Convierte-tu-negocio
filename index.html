@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      /* ====================== VARIABLES ====================== */
+      :root {
+        --bg-dark: #050816;
+        --bg-soft: #0b1026;
+        --primary: #7c7cff;
+        --text-main: #ffffff;
+        --text-muted: #a1a1aa;
+        --whatsapp: #25D366;
+      }
+
+      /* ====================== RESET ====================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+      }
+
+      /* ====================== NAV ====================== */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: var(--text-muted);
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 0.95rem;
+      }
+
+      .nav-btn {
+        background: rgba(255,255,255,0.1);
+        padding: 10px 22px;
+        border-radius: 30px;
+        color: white;
+        font-weight: 500;
+      }
+
+      /* Header navigation flexible */
+      .header-nav ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* ====================== HERO ====================== */
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+        padding: 80px 40px;
+        background: radial-gradient(circle at top left, #141b3d, transparent 60%);
+        gap: 20px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 span {
+        color: var(--primary);
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        max-width: 480px;
+        margin-bottom: 30px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #5f5fff);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 40px rgba(124,124,255,0.35);
+      }
+
+      .btn-whatsapp {
+        background: rgba(37, 211, 102, 0.15);
+        color: var(--whatsapp);
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(37, 211, 102, 0.4);
+      }
+
+      /* Visual placeholder */
+      .visual {
+        height: 300px;
+        border-radius: 24px;
+        background: radial-gradient(circle at top, #7c7cff, #1b1f4b 70%);
+        opacity: 0.85;
+      }
+
+      /* ====================== SECTIONS ====================== */
+      section {
+        padding: 80px 40px;
+        background-color: var(--bg-soft);
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.04);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .card h3 {
+        color: var(--primary);
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+      }
+
+      .card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* ====================== FOOTER ====================== */
+      footer {
+        padding: 30px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      /* ====================== WHATSAPP FLOAT ====================== */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--whatsapp);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        z-index: 999;
+        transition: transform 0.2s;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+
+      .whatsapp-float img {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* ====================== RESPONSIVE ====================== */
+      @media (max-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 60px 30px;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          max-width: 100%;
+        }
+
+        nav {
+          padding: 20px 30px;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav div {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 10px;
+        }
+
+        nav a {
+          margin: 8px 0;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .visual {
+          height: 200px;
+        }
+
+        .whatsapp-float {
+          width: 50px;
+          height: 50px;
+        }
+
+        .whatsapp-float img {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero p {
+          font-size: 0.95rem;
+        }
+
+        section {
+          padding: 60px 20px;
+        }
+
+        .cards {
+          gap: 20px;
+        }
+      }
+
+    </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <strong>Automatización AI</strong>
+    <div>
+      <a href="#">Servicios</a>
+      <a href="#">Casos</a>
+      <a href="#">Contacto</a>
+      <a href="https://wa.me/34634123530" target="_blank" class="nav-btn">WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1>Convierte tu negocio en una <span>máquina impulsada por IA</span></h1>
+      <p>Automatizamos reservas, pedidos y atención al cliente para restaurantes que quieren escalar sin fricción.</p>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Sesión estratégica gratuita</a>
+        <a href="https://wa.me/34634123530?text=Hola,%20quiero%20automatizar%20mi%20restaurante" target="_blank" class="btn-whatsapp">
+          Hablar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="visual"></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="cards">
+      <div class="card">
+        <h3>Automatización real</h3>
+        <p>Flujos diseñados para reducir trabajo humano y aumentar eficiencia operativa.</p>
+      </div>
+      <div class="card">
+        <h3>Chatbots inteligentes</h3>
+        <p>Atención 24/7 sin perder el tono humano ni clientes.</p>
+      </div>
+      <div class="card">
+        <h3>Optimización continua</h3>
+        <p>Medimos, analizamos y mejoramos cada punto del proceso.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Automatización AI · Diseño y automatización avanzada
+  </footer>
+
+  <!-- WHATSAPP FLOAT BUTTON -->
+  <a href="https://wa.me/34634123530?text=Hola,%20quiero%20más%20información" 
+     target="_blank" 
+     class="whatsapp-float"
+     aria-label="Contactar por WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+
+</body>
+</html>
