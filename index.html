@@ -1,352 +1,316 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Automation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatización AI para Restaurantes</title>
+  <meta name="description" content="Automatiza reservas y atención al cliente en tu restaurante con IA. Prueba gratuita sin compromiso.">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-      /* ====================== VARIABLES ====================== */
-      :root {
-        --bg-dark: #050816;
-        --bg-soft: #0b1026;
-        --primary: #7c7cff;
-        --text-main: #ffffff;
-        --text-muted: #a1a1aa;
-        --whatsapp: #25D366;
-      }
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --bg-soft: #0b1026;
+      --primary: #7c7cff;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --whatsapp: #25D366;
+    }
 
-      /* ====================== RESET ====================== */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Inter', sans-serif;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+    }
 
-      body {
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-      }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
 
-      /* ====================== NAV ====================== */
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.1);
+      padding: 10px 22px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      padding: 80px 40px;
+      background: radial-gradient(circle at top left, #141b3d, transparent 60%);
+      gap: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #5f5fff);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .btn-whatsapp {
+      border: 1px solid rgba(37,211,102,0.4);
+      color: var(--whatsapp);
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .visual {
+      height: 300px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, #7c7cff, #1b1f4b 70%);
+    }
+
+    section {
+      padding: 80px 40px;
+      background-color: var(--bg-soft);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.04);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .step span {
+      display: inline-flex;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .step p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .final-cta {
+      background: radial-gradient(circle at top, #141b3d, transparent 70%);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .final-cta p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
       nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 40px;
-        flex-wrap: wrap;
+        padding: 12px 16px;
+        height: 56px;
       }
 
-      nav a {
-        color: var(--text-muted);
-        text-decoration: none;
-        margin-left: 20px;
-        font-size: 0.95rem;
+      nav div a:not(.nav-btn) {
+        display: none;
       }
 
-      .nav-btn {
-        background: rgba(255,255,255,0.1);
-        padding: 10px 22px;
-        border-radius: 30px;
-        color: white;
-        font-weight: 500;
-      }
-
-      /* Header navigation flexible */
-      .header-nav ul {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      /* ====================== HERO ====================== */
       .hero {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        align-items: center;
-        padding: 80px 40px;
-        background: radial-gradient(circle at top left, #141b3d, transparent 60%);
-        gap: 20px;
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        text-align: center;
       }
 
       .hero h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 20px;
-      }
-
-      .hero h1 span {
-        color: var(--primary);
-      }
-
-      .hero p {
-        font-size: 1.05rem;
-        color: var(--text-muted);
-        max-width: 480px;
-        margin-bottom: 30px;
+        font-size: 1.9rem;
       }
 
       .hero-buttons {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
+        flex-direction: column;
       }
 
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary), #5f5fff);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        box-shadow: 0 10px 40px rgba(124,124,255,0.35);
-      }
-
-      .btn-whatsapp {
-        background: rgba(37, 211, 102, 0.15);
-        color: var(--whatsapp);
-        padding: 14px 28px;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        border: 1px solid rgba(37, 211, 102, 0.4);
-      }
-
-      /* Visual placeholder */
       .visual {
-        height: 300px;
-        border-radius: 24px;
-        background: radial-gradient(circle at top, #7c7cff, #1b1f4b 70%);
-        opacity: 0.85;
+        display: none;
       }
 
-      /* ====================== SECTIONS ====================== */
       section {
-        padding: 80px 40px;
-        background-color: var(--bg-soft);
+        padding: 60px 20px;
       }
 
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 30px;
+      .section-title,
+      .final-cta h2 {
+        font-size: 1.6rem;
       }
-
-      .card {
-        background: rgba(255,255,255,0.04);
-        padding: 30px;
-        border-radius: 20px;
-        border: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .card h3 {
-        color: var(--primary);
-        margin-bottom: 12px;
-        font-size: 1.2rem;
-      }
-
-      .card p {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        line-height: 1.5;
-      }
-
-      /* ====================== FOOTER ====================== */
-      footer {
-        padding: 30px;
-        text-align: center;
-        color: var(--text-muted);
-        font-size: 0.85rem;
-      }
-
-      /* ====================== WHATSAPP FLOAT ====================== */
-      .whatsapp-float {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: var(--whatsapp);
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        text-decoration: none;
-        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-        z-index: 999;
-        transition: transform 0.2s;
-      }
-
-      .whatsapp-float:hover {
-        transform: scale(1.1);
-      }
-
-      .whatsapp-float img {
-        width: 28px;
-        height: 28px;
-      }
-
-      /* ====================== RESPONSIVE ====================== */
-      @media (max-width: 1024px) {
-        .hero {
-          grid-template-columns: 1fr;
-          padding: 60px 30px;
-        }
-
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero p {
-          max-width: 100%;
-        }
-
-        nav {
-          padding: 20px 30px;
-        }
-
-        .hero-buttons {
-          justify-content: center;
-        }
-      }
-
-      @media (max-width: 768px) {
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        nav div {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          margin-top: 10px;
-        }
-
-        nav a {
-          margin: 8px 0;
-        }
-
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .hero p {
-          font-size: 1rem;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .visual {
-          height: 200px;
-        }
-
-        .whatsapp-float {
-          width: 50px;
-          height: 50px;
-        }
-
-        .whatsapp-float img {
-          width: 22px;
-          height: 22px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero h1 {
-          font-size: 1.8rem;
-        }
-
-        .hero p {
-          font-size: 0.95rem;
-        }
-
-        section {
-          padding: 60px 20px;
-        }
-
-        .cards {
-          gap: 20px;
-        }
-      }
-
-    </style>
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <strong>Automatización AI</strong>
-    <div>
-      <a href="#">Servicios</a>
-      <a href="#">Casos</a>
-      <a href="#">Contacto</a>
-      <a href="https://wa.me/34634123530" target="_blank" class="nav-btn">WhatsApp</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="hero">
-    <div>
-      <h1>Convierte tu negocio en una <span>máquina impulsada por IA</span></h1>
-      <p>Automatizamos reservas, pedidos y atención al cliente para restaurantes que quieren escalar sin fricción.</p>
-
-      <div class="hero-buttons">
-        <a href="#" class="btn-primary">Sesión estratégica gratuita</a>
-        <a href="https://wa.me/34634123530?text=Hola,%20quiero%20automatizar%20mi%20restaurante" target="_blank" class="btn-whatsapp">
-          Hablar por WhatsApp
-        </a>
-      </div>
-    </div>
-
-    <div class="visual"></div>
+<nav>
+  <strong>Automatización AI</strong>
+  <div>
+    <a href="https://wa.me/34634123530" target="_blank" class="nav-btn">WhatsApp</a>
   </div>
+</nav>
 
-  <!-- SERVICES -->
-  <section>
-    <div class="cards">
-      <div class="card">
-        <h3>Automatización real</h3>
-        <p>Flujos diseñados para reducir trabajo humano y aumentar eficiencia operativa.</p>
-      </div>
-      <div class="card">
-        <h3>Chatbots inteligentes</h3>
-        <p>Atención 24/7 sin perder el tono humano ni clientes.</p>
-      </div>
-      <div class="card">
-        <h3>Optimización continua</h3>
-        <p>Medimos, analizamos y mejoramos cada punto del proceso.</p>
-      </div>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Automatiza tu <span>restaurante</span> con IA</h1>
+    <p>Te mostramos cómo reducir llamadas y mejorar reservas sin contratar más personal.</p>
+
+    <div class="hero-buttons">
+      <a href="https://calendly.com/correogarciatorresmartin/automatiza-tu-negocio-con-ia" target="_blank" class="btn-primary">
+        Prueba de automatización gratuita
+      </a>
+      <a href="https://wa.me/34634123530" target="_blank" class="btn-whatsapp">
+        Hablar por WhatsApp
+      </a>
     </div>
-  </section>
+  </div>
+  <div class="visual"></div>
+</div>
 
-  <footer>
-    © 2026 Automatización AI · Diseño y automatización avanzada
-  </footer>
+<!-- COMO FUNCIONA -->
+<section>
+  <h2 class="section-title">¿Cómo funciona la prueba?</h2>
+  <div class="steps">
+    <div class="step">
+      <span>1</span>
+      <p>Reservas la prueba gratuita.</p>
+    </div>
+    <div class="step">
+      <span>2</span>
+      <p>Te mostramos cómo automatizar tu restaurante.</p>
+    </div>
+    <div class="step">
+      <span>3</span>
+      <p>Decides si lo implementamos.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- WHATSAPP FLOAT BUTTON -->
-  <a href="https://wa.me/34634123530?text=Hola,%20quiero%20más%20información" 
-     target="_blank" 
-     class="whatsapp-float"
-     aria-label="Contactar por WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+<!-- SERVICIOS -->
+<section>
+  <div class="cards">
+    <div class="card">
+      <h3>Automatización real</h3>
+      <p>Menos llamadas, menos errores y más mesas ocupadas.</p>
+    </div>
+    <div class="card">
+      <h3>Chatbots inteligentes</h3>
+      <p>Atención 24/7 por web y WhatsApp.</p>
+    </div>
+    <div class="card">
+      <h3>Optimización continua</h3>
+      <p>Flujos mejorados para maximizar resultados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta">
+  <h2>¿Probamos la automatización en tu restaurante?</h2>
+  <p>Sin compromiso. Decide después.</p>
+
+  <a href="https://calendly.com/correogarciatorresmartin/automatiza-tu-negocio-con-ia" target="_blank" class="btn-primary">
+    Hacer la prueba de automatización
   </a>
+</section>
+
+<footer>
+  © 2026 Automatización AI · Sistemas inteligentes para restaurantes
+</footer>
 
 </body>
 </html>
